@@ -1,48 +1,26 @@
-import React from "react";
+import styled from "styled-components";
 
-class Button extends React.Component {
-  state = {
-    buttons: [
-      "(",
-      "CE",
-      ")",
-      "C",
-      "1",
-      "2",
-      "3",
-      "+",
-      "4",
-      "5",
-      "6",
-      "-",
-      "7",
-      "8",
-      "9",
-      "*",
-      ".",
-      "0",
-      "=",
-      "/"
-    ]
-  };
-
-  render() {
-    return (
-      <div className="button">
-        {this.state.buttons.map(button => {
-          return (
-            <button
-              onClick={e => this.props.onClick(e.target.name)}
-              name={button}
-              key={button}
-            >
-              {button}
-            </button>
-          );
-        })}
-      </div>
-    );
+// styling button element by assigning it a name of ButtonConatiner component
+export const ButtonContainer = styled.button`
+  text-transform: capitalize;
+  font-size: 1rem;
+  background: transparent;
+  border: 0.05rem solid var(--lightBlue);
+  border-color: ${props =>
+    props.cart ? "var(--mainYellow)" : "var(--lightBlue)"};
+  color: ${prop => (prop.cart ? "var(--mainYellow)" : "var(--lightBlue)")};
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  margin: 0.2rem 0.5rem 0.2rem 0;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background: ${prop =>
+      prop.cart ? "var(--mainYellow)" : "var(--lightBlue)"};
+    color: var(--mainBlue);
   }
-}
-
-export default Button;
+  &:focus {
+    outline: none;
+  }
+`;
+//here &:hover means if there is hover action in button element then apply the following styles
